@@ -8,9 +8,168 @@
   <title>Document</title>
 </head>
 <body>
-  <header></header>
-  <main></main>
-  <footer></footer>
+  <header>
+    <div class="container header-container">
+      <h1>Photofilters</h1>
+    </div>
+  </header>
+  <main>
+    <div class="container main-container">
+      <form class="filter-settings">
+        <ul class="filter-list">
+          <li class="filter-item">
+            <label for="size">Размер изображения</label>
+            <input 
+              type="range" 
+              min="10" 
+              max="90" 
+              value="50" 
+              name="size" 
+              id="size" 
+              data-sizing="%">
+          </li>
+          <li class="filter-item">
+            <label for="contrast">Контраст</label>
+            <input 
+              type="range" 
+              min="10"
+              max="200"
+              value="100"
+              name="contrast" 
+              id="contrast"
+              data-sizing="%">
+          </li>
+          <li class="filter-item">
+            <label for="brightness">Яркость</label>
+            <input 
+              type="range" 
+              min="10"
+              max="200"
+              value="100"
+              name="brightness" 
+              id="brightness"
+              data-sizing="%">
+          </li>
+          <li class="filter-item">
+            <label for="saturate">Насыщенность</label>
+            <input 
+              type="range"
+              min="0"
+              max="100"
+              value="100" 
+              name="saturate" 
+              id="saturate"
+              data-sizing="%">
+          </li>
+          <li class="filter-item">
+            <label for="sepia">Сепия</label>
+            <input 
+              type="range" 
+              min="0"
+              max="200"
+              value="0"
+              name="sepia" 
+              id="sepia"
+              data-sizing="%">
+          </li>
+          <li class="filter-item">
+            <label for="grayscale">Оттенки серого</label>
+            <input 
+              type="range" 
+              min="0"
+              max="200"
+              value="0"
+              name="grayscale" 
+              id="grayscale"
+              data-sizing="%">
+          </li>
+          <li class="filter-item">
+            <label for="invert">Инверсия цвета</label>
+            <input 
+              type="range" 
+              min="0" 
+              max="100" 
+              value="0" 
+              name="invert" 
+              id="invert" 
+              data-sizing="%">
+          </li>
+          <li class="filter-item">
+            <label for="hue-rotate">Оттенок</label>
+            <input 
+              type="range" 
+              min="0"
+              max="360"
+              value="0"
+              name="hue-rotate" 
+              id="hue-rotate"
+              data-sizing="deg">
+          </li>
+          <li class="filter-item">
+            <label for="blur">Размытие</label>
+            <input 
+              type="range" 
+              min="0" 
+              max="10"
+              step="0.1"
+              value="0" 
+              name="blur" 
+              id="blur" 
+              data-sizing="px">
+          </li>
+          <li class="filter-item reset">
+            <button type="reset" class="button reset-button">Сбросить свойства</button>
+          </li>
+        </ul>
+      </form>
+      <div class="img">
+        <img src="assets/img/img2.jpg" alt="photo">
+        <label class="button">Выбрать фото
+          <input type="file" accept="image/*" name="image" id="image">
+        </label>
+      </div>
+      <div class="advanced">
+        <div class="filter-set">
+          <p>Текущий фильтр:</p>
+          <div class="filter-field">
+            <input type="text" readonly class="filter-text">
+            <button type="button" class="clipboard-button"></button>
+          </div>
+        </div>
+        <div class="filter-presets">
+          <button type="button" class="show-presets"><span class="show-presets-button">></span></button>
+          <div class="presets-container">
+            <ul class="presets-list">
+              <li class="preset-item" data-filter="none">
+                <span class="preset-item-title"></span>
+              </li>
+              <li class="preset-item" data-filter="clarendon">
+                <span class="preset-item-title"></span>
+              </li>
+              <li class="preset-item" data-filter="reyes">
+                <span class="preset-item-title"></span>
+              </li>
+              <li class="preset-item" data-filter="xpro2">
+                <span class="preset-item-title"></span>
+              </li>
+              <li class="preset-item" data-filter="inkwell">
+                <span class="preset-item-title"></span>
+              </li>
+              <li class="preset-item" data-filter="brannan">
+                <span class="preset-item-title"></span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer>
+    <div class="container footer-container">
+      <a href="https://rs.school/js/"><img src="assets/img/rs_school_js.svg" alt="rs-school"></a>
+      <a href="https://github.com/NMakarevich"><img src="assets/img/github.png" alt="github"></a>
+    </div>
+  </footer>
   <script src="index.js"></script>
 </body>
 </html>

@@ -2,3 +2,261 @@
   margin: 0;
   padding: 0;
 }
+
+:root {
+  --color: #FFFFFF;
+  --primary-color: #6200EE;
+  --size: 50%;
+  --contrast: 100%;
+  --brightness: 100%;
+  --saturate: 100%;
+  --sepia: 0%;
+  --grayscale: 0%;
+  --invert: 0%;
+  --hue-rotate: 0deg;
+  --blur: 0px;
+}
+
+@font-face {
+  font-family: "RobotoMono";
+  src: url(assets/fonts/RobotoMono-Light.ttf);
+}
+
+body {
+  background-color: var(--color);
+}
+
+h1, label, p {
+  color: var(--color);
+  filter: hue-rotate(180deg) invert(1);
+}
+
+h1 {
+  font-family: RobotoMono;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.container {
+  max-width: 1440px;
+  padding: 20px;
+  margin: 0 auto;
+}
+
+.header-container {
+  text-align: center;
+}
+
+.main-container {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: auto auto;
+  gap: 20px;
+}
+
+ul {
+  list-style: none;
+}
+
+.filter-item {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.reset {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.img {
+  justify-self: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 700px;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  width: 120px;
+  height: 50px;
+  border: 2px solid var(--color);
+  border-radius: 5px;
+  filter: hue-rotate(180deg) invert(1);
+  background-color: transparent;
+  color: var(--color);
+}
+
+.img img {
+  width: var(--size);
+  margin-bottom: 20px;
+  filter:
+    contrast(var(--contrast, 100%))
+    brightness(var(--brightness, 100%)) 
+    saturate(var(--saturate, 100%))
+    sepia(var(--sepia, 0%))
+    grayscale(var(--grayscale, 0%)) 
+    invert(var(--invert, 0%)) 
+    hue-rotate(var(--hue-rotate, 0deg))
+    blur(var(--blur, 0px)) 
+}
+
+#image {
+  display: none;
+}
+
+.advanced {
+  min-height: 100px;
+  grid-column-start: 1;
+  grid-column-end: -1;
+}
+
+.filter-set {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 40px;
+  font-size: 20px;
+}
+
+.filter-field {
+  display: flex;
+  width: 75%;
+  height: 30px;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+.filter-text {
+  flex: 1;
+  padding: 5px;
+  font-size: 20px;
+  border: none;
+  border-radius: 5px;
+}
+
+.clipboard-button {
+  flex-shrink: 0;
+  width: 30px;
+  height: 100%;
+  background-color: transparent;
+  background-image: url("assets/img/clipboard.png"); 
+  background-position: 50% 50%;
+  background-size: 100% 100%;
+  border: none;
+  border-left: 1px solid black;
+  cursor: pointer;
+}
+
+input[type="range"] {
+  border: 1px solid black;
+  border-radius: 8px;
+  height: 5px;
+  outline: none;
+  -webkit-appearance: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  -webkit-appearance: none;
+  background: black;
+  transition: All .7s;
+}
+
+.presets-container {
+  width: 100%;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .7s;
+}
+
+.show-presets {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 1px;
+  background-color: var(--color);
+  border: none;
+  filter: hue-rotate(180deg) invert(1);
+}
+
+.show-presets span {
+  display: block;
+  position: absolute;
+  top: -750%;
+  left: 50%;
+  width: 15px;
+  height: 15px;
+  font-size: 15px;
+  line-height: 15px;
+  color: var(--color);
+  background-color: black;
+  border: 1px solid var(--color);
+  border-radius: 50%;
+  transform: rotate(90deg);
+  cursor: pointer;
+  transition: .5s;
+}
+
+.presets-list {
+  display: flex;
+  justify-content: space-around;
+  padding: 20px 0;
+  list-style: none;
+  box-shadow: inset 0 -120px 5px -120px rgba(0, 0, 0, .5);
+}
+
+.preset-item {
+  position: relative;
+  display: block;
+  width: 100px;
+  height: 100px;
+  box-shadow: 0 0 3px 3px rgba(0, 0, 0, .5);
+  background-size: cover;
+  background-position: 50% 0;
+  cursor: pointer;
+  transition: box-shadow .5s;
+}
+
+.preset-item:hover {
+  box-shadow: 0 0 5px 5px rgba(0, 0, 0, .7);
+}
+
+.preset-item-title {
+  position: absolute;
+  top: 75%;
+  left: 50%;
+  text-transform: uppercase;
+  transform: translateX(-50%);
+  color: black;
+  font-weight: bold;
+}
+
+footer {
+  min-height: 100px;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-container a {
+  display: block;
+  height: 50px;
+}
+
+.footer-container img {
+  height: 100%;
+}
