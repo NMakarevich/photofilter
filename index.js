@@ -2,7 +2,7 @@ const FILTERS = {
   none: 'contrast(100%) brightness(100%) saturate(100%) sepia(0%) hue-rotate(0deg) grayscale(0%) invert(0%) blur(0px)',
   clarendon: 'contrast(120%) brightness(125%)',
   reyes: 'contrast(85%) brightness(110%) saturate(75%) sepia(22%)',
-  xpro2: 'contrast(100%) brightness(100%) saturate(100%) sepia(30%)',
+  xpro2: 'contrast(130%) brightness(80%) saturate(150%) sepia(30%) hue-rotate(-20deg)',
   inkwell: 'contrast(110%) brightness(110%) saturate(100%) sepia(30%) grayscale(100%)',
   brannan: 'contrast(140%) sepia(50%)'
 }
@@ -17,8 +17,7 @@ const clipboardButton = document.querySelector('.clipboard-button')
 
 function showCurrentFilter() {
   let filterText = '';
-  inputs.forEach((input, index) => {
-    if (index < 1) return;
+  inputs.forEach((input) => {
     filterText += `${input.name}(${input.value}${input.dataset.sizing}) `
   });
   filterTextElem.value = filterText;
@@ -115,8 +114,7 @@ function getValues(str) {
 }
 
 function setValues(items, obj) { 
-  items.forEach((item, index) => {
-    if (index < 1) return;
+  items.forEach((item) => {
     const suffix = item.dataset.sizing || '';
     item.value = obj[item.name] || item.value;
     document.documentElement.style.setProperty(`--${item.name}`, (obj[item.name] || item.value) + suffix)

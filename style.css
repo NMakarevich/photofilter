@@ -6,7 +6,7 @@
 :root {
   --color: #FFFFFF;
   --primary-color: #6200EE;
-  --size: 50%;
+  --size: 80%;
   --contrast: 100%;
   --brightness: 100%;
   --saturate: 100%;
@@ -38,7 +38,7 @@ h1 {
 }
 
 .container {
-  max-width: 1440px;
+  max-width: 1200px;
   min-width: 1055px;
   padding: 20px;
   margin: 0 auto;
@@ -131,7 +131,7 @@ ul {
 
 .filter-field {
   display: flex;
-  width: 75%;
+  width: 90%;
   height: 30px;
   border: 1px solid black;
   border-radius: 5px;
@@ -143,6 +143,7 @@ ul {
   font-size: 20px;
   border: none;
   border-radius: 5px;
+  outline: none;
 }
 
 .clipboard-button {
