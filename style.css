@@ -96,21 +96,12 @@ ul {
   color: var(--color);
 }
 
-.img img {
-  width: var(--size);
+.filtered-photo {
   margin-bottom: 20px;
-  filter:
-    contrast(var(--contrast, 100%))
-    brightness(var(--brightness, 100%)) 
-    saturate(var(--saturate, 100%))
-    sepia(var(--sepia, 0%))
-    grayscale(var(--grayscale, 0%)) 
-    invert(var(--invert, 0%)) 
-    hue-rotate(var(--hue-rotate, 0deg))
-    blur(var(--blur, 0px)) 
+  filter: "";
 }
 
-#image {
+#load-image {
   display: none;
 }
 

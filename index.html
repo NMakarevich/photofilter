@@ -15,10 +15,10 @@
   </header>
   <main>
     <div class="container main-container">
-      <form class="filter-settings">
+      <div class="filter-settings">
         <ul class="filter-list">
           <li class="filter-item">
-            <label for="contrast">Контраст</label>
+            <label for="contrast">Contrast</label>
             <input 
               type="range" 
               min="10"
@@ -29,7 +29,7 @@
               data-sizing="%">
           </li>
           <li class="filter-item">
-            <label for="brightness">Яркость</label>
+            <label for="brightness">Brightness</label>
             <input 
               type="range" 
               min="10"
@@ -40,7 +40,7 @@
               data-sizing="%">
           </li>
           <li class="filter-item">
-            <label for="saturate">Насыщенность</label>
+            <label for="saturate">Saturate</label>
             <input 
               type="range"
               min="0"
@@ -51,18 +51,18 @@
               data-sizing="%">
           </li>
           <li class="filter-item">
-            <label for="sepia">Сепия</label>
+            <label for="sepia">Sepia</label>
             <input 
               type="range" 
               min="0"
-              max="200"
+              max="100"
               value="0"
               name="sepia" 
               id="sepia"
               data-sizing="%">
           </li>
           <li class="filter-item">
-            <label for="grayscale">Оттенки серого</label>
+            <label for="grayscale">Grayscale</label>
             <input 
               type="range" 
               min="0"
@@ -73,7 +73,7 @@
               data-sizing="%">
           </li>
           <li class="filter-item">
-            <label for="invert">Инверсия цвета</label>
+            <label for="invert">Invert</label>
             <input 
               type="range" 
               min="0" 
@@ -84,7 +84,7 @@
               data-sizing="%">
           </li>
           <li class="filter-item">
-            <label for="hue-rotate">Оттенок</label>
+            <label for="hue-rotate">Hue-rotate</label>
             <input 
               type="range" 
               min="-360"
@@ -95,7 +95,7 @@
               data-sizing="deg">
           </li>
           <li class="filter-item">
-            <label for="blur">Размытие</label>
+            <label for="blur">Blur</label>
             <input 
               type="range" 
               min="0" 
@@ -107,19 +107,19 @@
               data-sizing="px">
           </li>
           <li class="filter-item reset">
-            <button type="reset" class="button reset-button">Сбросить свойства</button>
+            <button type="button" class="button reset-button">Reset</button>
           </li>
         </ul>
-      </form>
+      </div>
       <div class="img">
-        <img src="assets/img/img2.jpg" alt="photo">
-        <label class="button">Выбрать фото
-          <input type="file" accept="image/*" name="image" id="image">
+        <img src="assets/img/img2.jpg" alt="photo" class="filtered-photo">
+        <label class="button">Load
+          <input type="file" accept="image/*" name="image" id="load-image">
         </label>
       </div>
       <div class="advanced">
         <div class="filter-set">
-          <p>Текущий фильтр:</p>
+          <p>Current filter:</p>
           <div class="filter-field">
             <input type="text" readonly class="filter-text">
             <button type="button" class="clipboard-button"></button>
@@ -129,7 +129,7 @@
           <button type="button" class="show-presets"><span class="show-presets-button">></span></button>
           <div class="presets-container">
             <ul class="presets-list">
-              <li class="preset-item" data-filter="none">
+              <!-- <li class="preset-item" data-filter="none">
                 <span class="preset-item-title"></span>
               </li>
               <li class="preset-item" data-filter="clarendon">
@@ -146,7 +146,7 @@
               </li>
               <li class="preset-item" data-filter="brannan">
                 <span class="preset-item-title"></span>
-              </li>
+              </li> -->
             </ul>
           </div>
         </div>

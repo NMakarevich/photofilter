@@ -1,53 +1,135 @@
 const FILTERS = {
-  none: 'contrast(100%) brightness(100%) saturate(100%) sepia(0%) hue-rotate(0deg) grayscale(0%) invert(0%) blur(0px)',
-  clarendon: 'contrast(120%) brightness(125%)',
-  reyes: 'contrast(85%) brightness(110%) saturate(75%) sepia(22%)',
-  xpro2: 'contrast(130%) brightness(80%) saturate(150%) sepia(30%) hue-rotate(-20deg)',
-  inkwell: 'contrast(110%) brightness(110%) saturate(100%) sepia(30%) grayscale(100%)',
-  brannan: 'contrast(140%) sepia(50%)'
+  contrast: {
+    default: 100,
+    current: 100,
+    sizing: '%'
+  },
+  brightness: {
+    default: 100,
+    current: 100,
+    sizing: '%'
+  },
+  saturate: {
+    default: 100,
+    current: 100,
+    sizing: '%'
+  },
+  sepia: {
+    default: 0,
+    current: 0,
+    sizing: '%'
+  },
+  'hue-rotate': {
+    default: 0,
+    current: 0,
+    sizing: 'deg'
+  },
+  grayscale: {
+    default: 0,
+    current: 0,
+    sizing: '%'
+  },
+  invert: {
+    default: 0,
+    current: 0,
+    sizing: '%'
+  },
+  blur: {
+    default: 0,
+    current: 0,
+    sizing: 'px'
+  }
+}
+
+const PRESETS = {
+  none: setDefault(),
+  clarendon: {contrast: 120, brightness: 120},
+  reyes: {contrast: 85, brightness: 110, saturate: 75, sepia: 22},
+  xpro2: {contrast: 130, brightness: 80, saturate: 150, sepia: 30, 'hue-rotate': -20},
+  inkwell: {contrast: 110, brightness: 110, saturate: 100, sepia: 30, grayscale: 100},
+  brannan: {contrast: 140, sepia: 50},
 }
 
 const filterList = document.querySelector('.filter-list');
 const inputs = filterList.querySelectorAll('input');
-const form = document.querySelector('.filter-settings');
 const resetButton = document.querySelector('.reset-button');
 const filterTextElem = document.querySelector('.filter-text');
-const imageInput = document.querySelector('#image');
-const clipboardButton = document.querySelector('.clipboard-button')
+const photo = document.querySelector('.filtered-photo');
+const imageInput = document.querySelector('#load-image');
+const clipboardButton = document.querySelector('.clipboard-button');
+const showPresets = document.querySelector('.show-presets');
+const presetsContainer = document.querySelector('.presets-container');
+const presetsList = document.querySelector('.presets-list');
 
-function showCurrentFilter() {
-  let filterText = '';
-  inputs.forEach((input) => {
-    filterText += `${input.name}(${input.value}${input.dataset.sizing}) `
-  });
-  filterTextElem.value = filterText;
+function renderPresets() {
+  for (let preset in PRESETS) {
+    const div = document.createElement('div');
+    div.innerHTML = `<li class="preset-item" data-filter="${preset}">
+    <span class="preset-item-title">${preset}</span></li>`;
+    const presetItem = div.firstElementChild;
+    setPreset(PRESETS[preset]);
+    presetItem.style.backgroundImage = `url(assets/img/img.jpg)`;
+    presetItem.style.filter = buildFilterProperty();
+    setDefault();
+    presetsList.appendChild(presetItem);
+  }
 }
 
-showCurrentFilter();
+function setFilter() {
+  photo.style.filter = buildFilterProperty();
+  filterTextElem.value = photo.style.filter
+}
+
+function setDefault() {
+  for (let filter in FILTERS) {
+    FILTERS[filter].current = FILTERS[filter].default;
+  }
+}
+
+function setPreset(preset) {
+  for (let filter in preset) {
+    FILTERS[filter].current = preset[filter];
+  }
+  setFilter();
+}
+
+function buildFilterProperty() {
+  let filterText = '';
+  for (let filter in FILTERS) {
+    filterText += `${filter}(${FILTERS[filter].current}${FILTERS[filter].sizing})`
+  }
+  return filterText;
+}
+
+renderPresets()
+setDefault();
+setFilter();
 
 filterList.addEventListener('change', inputUpdate)
 filterList.addEventListener('pointermove', inputUpdate)
 
 imageInput.addEventListener('change', (event) => {
-  const image = document.querySelector('img');
+  const image = document.querySelector('.filtered-photo');
   image.src = URL.createObjectURL(event.target.files[0])
 })
 
 function inputUpdate(event) {
   const target = event.target;
   if (target.tagName != 'INPUT') return
-  const suffix = target.dataset.sizing || '';
-  document.documentElement.style.setProperty(`--${target.name}`, target.value + suffix);
-  showCurrentFilter()
+  FILTERS[target.name].current = +target.value;
+  setFilter();
+}
+
+function setInputs() {
+  for (let filter in FILTERS) {
+    Array.from(inputs).find(item => item.name == filter).value = FILTERS[filter].current
+  }
 }
 
 resetButton.addEventListener('click', () => {
-  resetButton.click();
-  inputs.forEach(input => {
-    const suffix = input.dataset.sizing || '';
-    document.documentElement.style.setProperty(`--${input.name}`, input.value + suffix);
-  })
-  showCurrentFilter()
+  setDefault();
+  setInputs()
+  setFilter();
 })
 
 clipboardButton.addEventListener('click', copyToClipboard)
@@ -59,14 +141,11 @@ function copyToClipboard(e) {
   el.setAttribute = 'readonly';
   el.style.position = 'absolute';
   el.style.left = '-9999px';
-  document.body.appendChild( el );
+  document.body.appendChild(el);
   el.select();
-  document.execCommand( 'copy' );
-  document.body.removeChild( el );
+  document.execCommand('copy');
+  document.body.removeChild(el);
 }
-
-const showPresets = document.querySelector('.show-presets');
-const presetsContainer = document.querySelector('.presets-container')
 
 showPresets.addEventListener('click', (event) => {
   const target = event.target;
@@ -87,36 +166,10 @@ showPresets.addEventListener('click', (event) => {
   }
 })
 
-const presetItems = document.querySelectorAll('.preset-item');
-presetItems.forEach(item => {
-  item.style.backgroundImage = `url(assets/img/img.jpg)`;
-  item.firstElementChild.textContent = item.dataset.filter;
-  item.style.filter = FILTERS[item.dataset.filter]
-})
-
 presetsContainer.addEventListener('click', (evt) => {
-  resetButton.click();
+  setDefault();
   const target = evt.target;
   if (target.tagName != 'LI') return;
-  const filterStr = FILTERS[target.dataset.filter];
-  setValues(inputs, getValues(filterStr));
-  showCurrentFilter();
+  setPreset(PRESETS[target.dataset.filter]);
+  setInputs();
 })
-
-function getValues(str) {
-  str = str.split(' ').join('').split(')').filter(item => item)
-  let obj = {}
-  str.forEach(item => {
-    item = item.split('(')
-    obj[item[0]] = parseInt(item[1])
-  })
-  return obj
-}
-
-function setValues(items, obj) { 
-  items.forEach((item) => {
-    const suffix = item.dataset.sizing || '';
-    item.value = obj[item.name] || item.value;
-    document.documentElement.style.setProperty(`--${item.name}`, (obj[item.name] || item.value) + suffix)
-  })
-}
