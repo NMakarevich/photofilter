@@ -15,7 +15,7 @@
   </header>
   <main>
     <div class="container main-container">
-      <div class="filter-settings">
+      <div class="filter-settings flex-item">
         <ul class="filter-list">
           <li class="filter-item">
             <label for="contrast">Contrast</label>
@@ -111,42 +111,24 @@
           </li>
         </ul>
       </div>
-      <div class="img">
+      <div class="img flex-item">
         <img src="assets/img/img2.jpg" alt="photo" class="filtered-photo">
         <label class="button">Load
           <input type="file" accept="image/*" name="image" id="load-image">
         </label>
       </div>
-      <div class="advanced">
+      <div class="advanced flex-item full-width">
         <div class="filter-set">
           <p>Current filter:</p>
           <div class="filter-field">
             <input type="text" readonly class="filter-text">
-            <button type="button" class="clipboard-button"></button>
+            <button type="button" class="button clipboard-button"></button>
           </div>
         </div>
         <div class="filter-presets">
           <button type="button" class="show-presets"><span class="show-presets-button">></span></button>
           <div class="presets-container">
             <ul class="presets-list">
-              <!-- <li class="preset-item" data-filter="none">
-                <span class="preset-item-title"></span>
-              </li>
-              <li class="preset-item" data-filter="clarendon">
-                <span class="preset-item-title"></span>
-              </li>
-              <li class="preset-item" data-filter="reyes">
-                <span class="preset-item-title"></span>
-              </li>
-              <li class="preset-item" data-filter="xpro2">
-                <span class="preset-item-title"></span>
-              </li>
-              <li class="preset-item" data-filter="inkwell">
-                <span class="preset-item-title"></span>
-              </li>
-              <li class="preset-item" data-filter="brannan">
-                <span class="preset-item-title"></span>
-              </li> -->
             </ul>
           </div>
         </div>

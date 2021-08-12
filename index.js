@@ -134,17 +134,9 @@ resetButton.addEventListener('click', () => {
 
 clipboardButton.addEventListener('click', copyToClipboard)
 
-function copyToClipboard(e) {
-  e.preventDefault();
-  const el = document.createElement('textarea');
-  el.value = filterTextElem.value;
-  el.setAttribute = 'readonly';
-  el.style.position = 'absolute';
-  el.style.left = '-9999px';
-  document.body.appendChild(el);
-  el.select();
+function copyToClipboard() {
+  filterTextElem.select();
   document.execCommand('copy');
-  document.body.removeChild(el);
 }
 
 showPresets.addEventListener('click', (event) => {
