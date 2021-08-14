@@ -5,12 +5,12 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
-  <title>Document</title>
+  <title>Photofilter</title>
 </head>
 <body>
   <header>
     <div class="container header-container">
-      <h1>Photofilters</h1>
+      <h1>Photofilter</h1>
     </div>
   </header>
   <main>
@@ -66,7 +66,7 @@
             <input 
               type="range" 
               min="0"
-              max="200"
+              max="100"
               value="0"
               name="grayscale" 
               id="grayscale"
@@ -106,23 +106,23 @@
               id="blur" 
               data-sizing="px">
           </li>
-          <li class="filter-item reset">
-            <button type="button" class="button reset-button">Reset</button>
-          </li>
         </ul>
       </div>
       <div class="img flex-item">
         <img src="assets/img/img2.jpg" alt="photo" class="filtered-photo">
+      </div>
+      <div class="buttons">
+        <button type="button" class="button reset-button">Reset</button>
         <label class="button">Load
           <input type="file" accept="image/*" name="image" id="load-image">
         </label>
       </div>
-      <div class="advanced flex-item full-width">
+      <div class="advanced">
         <div class="filter-set">
           <p>Current filter:</p>
           <div class="filter-field">
             <input type="text" readonly class="filter-text">
-            <button type="button" class="button clipboard-button"></button>
+            <button type="button" class="button clipboard-button" title="Copy to clipboard"></button>
           </div>
         </div>
         <div class="filter-presets">
