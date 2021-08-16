@@ -112,10 +112,15 @@
         <img src="assets/img/img2.jpg" alt="photo" class="filtered-photo">
       </div>
       <div class="buttons">
-        <button type="button" class="button reset-button">Reset</button>
-        <label class="button">Load
-          <input type="file" accept="image/*" name="image" id="load-image">
-        </label>
+        <div class="reset flex-item">
+          <button type="button" class="button reset-button">Reset</button>
+        </div>
+        <div class="photo-buttons flex-item">
+          <label class="button">Load
+            <input type="file" accept="image/*" name="image" id="load-image">
+          </label>
+          <a class="button save-button" download="">Save</a>
+        </div>
       </div>
       <div class="advanced">
         <div class="filter-set">
