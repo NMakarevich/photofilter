@@ -56,6 +56,7 @@ const resetButton = document.querySelector('.reset-button');
 const filterTextElem = document.querySelector('.filter-text');
 const photo = document.querySelector('.filtered-photo');
 const imageInput = document.querySelector('#load-image');
+const saveButton = document.querySelector('.save-button');
 const clipboardButton = document.querySelector('.clipboard-button');
 const showPresets = document.querySelector('.show-presets');
 const presetsContainer = document.querySelector('.presets-container');
@@ -113,6 +114,21 @@ imageInput.addEventListener('change', (event) => {
   image.src = URL.createObjectURL(event.target.files[0])
 })
 
+function saveImage() {
+  const canvas = document.createElement('canvas')
+  canvas.width = photo.offsetWidth;
+  canvas.height = photo.offsetHeight;
+  let ctx = canvas.getContext('2d');
+  ctx.filter = photo.style.filter;
+  console.log(ctx.filter)
+  ctx.drawImage(photo,0,0, canvas.width, canvas.height)
+  let dt = canvas.toDataURL('image/jpeg');
+  saveButton.href = dt;
+  canvas.remove();
+}
+
+saveButton.addEventListener('click', saveImage)
+
 function inputUpdate(event) {
   const target = event.target;
   if (target.tagName != 'INPUT') return
@@ -140,7 +156,6 @@ function copyToClipboard() {
   temp.setAttribute('readonly', '');
   temp.style.position = 'absolute';
   temp.style.left = '-9999px';
-  document.body.appendChild(temp);
   temp.select();
   document.execCommand('copy');
   temp.remove();

@@ -82,8 +82,10 @@ ul {
 
 .buttons {
   display: flex;
+  flex-wrap: wrap;
   max-width: 100%;
   flex-basis: 100%;
+  row-gap: 20px;
   justify-content: space-around;
 }
 
@@ -98,11 +100,23 @@ ul {
   border-radius: 5px;
   box-sizing: border-box;
   background-color: transparent;
-}
-
-.reset-button {
   font-family: inherit;
   font-size: inherit;
+}
+
+.reset {
+  display: flex;
+  justify-content: center;
+}
+
+.photo-buttons {
+  display: flex;
+  justify-content: space-around;
+}
+
+.photo-buttons a {
+  text-decoration: none;
+  color: #000000;
 }
 
 .filtered-photo {
