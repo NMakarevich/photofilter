@@ -120,7 +120,6 @@ function saveImage() {
   canvas.height = photo.offsetHeight;
   let ctx = canvas.getContext('2d');
   ctx.filter = photo.style.filter;
-  console.log(ctx.filter)
   ctx.drawImage(photo,0,0, canvas.width, canvas.height)
   let dt = canvas.toDataURL('image/jpeg');
   saveButton.href = dt;
