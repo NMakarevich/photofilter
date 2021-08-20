@@ -13,11 +13,17 @@
   src: url(assets/fonts/RobotoMono-Light.ttf);
 }
 
+@font-face {
+  font-family: "Raleway";
+  src: url(assets/fonts/Raleway-Light.ttf);
+}
+
 body {
-  font-family: RobotoMono;
+  font-family: "RobotoMono";
 }
 
 h1 {
+  font-family: "Raleway", sans-serif;
   text-transform: uppercase;
   letter-spacing: 2px;
 }
@@ -85,8 +91,6 @@ ul {
   flex-wrap: wrap;
   max-width: 100%;
   flex-basis: 100%;
-  row-gap: 20px;
-  justify-content: space-around;
 }
 
 .button {
@@ -104,14 +108,10 @@ ul {
   font-size: inherit;
 }
 
-.reset {
-  display: flex;
-  justify-content: center;
-}
-
 .photo-buttons {
   display: flex;
-  justify-content: space-around;
+  gap: 20px;
+  justify-content: center;
 }
 
 .photo-buttons a {
@@ -143,15 +143,16 @@ ul {
 
 .filter-field {
   display: flex;
-  width: 90%;
-  height: 30px;
-  border: 1px solid black;
+  width: 100%;
+  height: 50px;
+  border: 2px solid black;
   border-radius: 5px;
 }
 
 .filter-text {
+  text-align: center;
   flex: 1;
-  padding: 5px;
+  padding: 10px;
   font-size: 20px;
   border: none;
   border-radius: 5px;
@@ -160,14 +161,15 @@ ul {
 
 .clipboard-button {
   flex-shrink: 0;
-  width: 30px;
+  width: 50px;
   height: 100%;
   background-color: transparent;
   background-image: url("assets/img/clipboard.png"); 
   background-position: 50% 50%;
-  background-size: 100% 100%;
+  background-size: 80% 80%;
+  background-repeat: no-repeat;
   border: none;
-  border-left: 1px solid black;
+  border-left: 2px solid black;
   border-radius: 0;
   cursor: pointer;
 }
@@ -206,7 +208,9 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 .show-presets span {
-  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: absolute;
   top: -750%;
   left: 50%;
@@ -217,7 +221,6 @@ input[type="range"]::-webkit-slider-thumb {
   background-color: white;
   border: 1px solid black;
   border-radius: 50%;
-  transform: rotate(90deg);
   cursor: pointer;
   transition: .5s;
 }
@@ -229,7 +232,6 @@ input[type="range"]::-webkit-slider-thumb {
   gap: 20px;
   padding: 20px;
   list-style: none;
-  box-shadow: inset 0 -120px 5px -120px rgba(0, 0, 0, .5);
 }
 
 .preset-item {
@@ -237,7 +239,6 @@ input[type="range"]::-webkit-slider-thumb {
   display: block;
   width: 100px;
   height: 100px;
-  box-shadow: 0 0 3px 3px rgba(0, 0, 0, .5);
   background-size: cover;
   background-position: 50% 0;
   cursor: pointer;
@@ -249,13 +250,15 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 .preset-item-title {
+  display: flex;
+  justify-content: center;
   position: absolute;
-  top: 75%;
-  left: 50%;
-  transform: translateX(-50%);
+  width: 100%;
+  top: 76%;
   font-size: 18px;
   font-weight: bold;
   text-transform: uppercase;
+  background-color: rgba(255, 255, 255, .5);
   color: black;
 }
 

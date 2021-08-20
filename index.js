@@ -19,11 +19,6 @@ const FILTERS = {
     current: 0,
     sizing: '%'
   },
-  'hue-rotate': {
-    default: 0,
-    current: 0,
-    sizing: 'deg'
-  },
   grayscale: {
     default: 0,
     current: 0,
@@ -33,6 +28,11 @@ const FILTERS = {
     default: 0,
     current: 0,
     sizing: '%'
+  },
+  'hue-rotate': {
+    default: 0,
+    current: 0,
+    sizing: 'deg'
   },
   blur: {
     default: 0,
@@ -166,10 +166,10 @@ showPresets.addEventListener('click', (event) => {
 
   showPresets.classList.toggle('active');
   if (showPresets.classList.contains('active')) {
-    target.style.transform = 'rotate(-90deg)'
+    target.style.transform = 'rotate(-180deg)'
   }
   else {
-    target.style.transform = 'rotate(90deg)'
+    target.style.transform = ''
   }
 
   if (presetsContainer.style.maxHeight){
