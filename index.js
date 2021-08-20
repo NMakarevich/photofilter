@@ -166,10 +166,10 @@ showPresets.addEventListener('click', (event) => {
 
   showPresets.classList.toggle('active');
   if (showPresets.classList.contains('active')) {
-    target.style.transform = 'rotate(-180deg)'
+    target.style.transform = 'translateX(-50%) rotate(-180deg)'
   }
   else {
-    target.style.transform = ''
+    target.style.transform = 'translateX(-50%)'
   }
 
   if (presetsContainer.style.maxHeight){
