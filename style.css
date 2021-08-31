@@ -49,7 +49,6 @@ h1 {
 
 .flex-item {
   min-width: 400px;
-  max-width: 600px;
   flex: 1 1;
 }
 

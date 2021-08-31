@@ -151,7 +151,7 @@ clipboardButton.addEventListener('click', copyToClipboard)
 
 function copyToClipboard() {
   const temp = document.createElement('textarea');
-  temp.value = filterTextElem.value;
+  temp.textContent = filterTextElem.value;
   temp.setAttribute('readonly', '');
   temp.style.position = 'absolute';
   temp.style.left = '-9999px';
